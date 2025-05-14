@@ -1,10 +1,23 @@
-﻿// Online C# Editor for free
-// Write, Edit and Run your C# code using C# Online Compiler
-
-using System;
+﻿using System;
 
 public class AtBash
 {
+    static string Decrypt(string code)
+    {
+        string decryp_kod = "";
+        string small_abc = "abcdefghijklmnopqrstuvwxyz";
+        string capital_abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        foreach (char c in code)
+        {
+            if (!char.IsLetter(c))
+                decryp_kod += c;
+            else if (char.IsUpper(c))
+                decryp_kod += capital_abc[capital_abc.Length - 1 - capital_abc.IndexOf(c)];
+            else
+                decryp_kod += small_abc[small_abc.Length - 1 - small_abc.IndexOf(c)];
+        }
+        return decryp_kod;
+    }
     static int DangerCheck(string message, string[] dangerWords)
     {
         int count = 0;
@@ -31,23 +44,6 @@ public class AtBash
         finalMessage += $"danger level is {dangerLevel}";
         Console.WriteLine(finalMessage);
     }
-    static string Decrypt(string code)
-    {
-        string decryp_kod = "";
-        string small_abc = "abcdefghijklmnopqrstuvwxyz";
-        string capital_abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        foreach (char c in code)
-        {
-            if (!char.IsLetter(c))
-                decryp_kod += c;
-            else if(char.IsUpper(c))
-                decryp_kod += capital_abc[capital_abc.Length - 1 - capital_abc.IndexOf(c)];
-            else
-                decryp_kod += small_abc[small_abc.Length - 1 - small_abc.IndexOf(c)];
-        }
-        return decryp_kod;
-    }
-
     public static void Main(string[] args)
     {
         string message = "Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb. nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo. nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh. nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm. nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt. nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg. nErxglib rh mvzi. Hgzb ivzwb.";
