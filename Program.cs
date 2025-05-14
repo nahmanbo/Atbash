@@ -5,14 +5,14 @@ using System;
 
 public class AtBash
 {
-    static (int, string) DangerCheck(string message, string[] dangerWords)
+    static int DangerCheck(string message, string[] dangerWords)
     {
         int count = 0;
         string[] messageArray = message.Split(" ");
         foreach (string word in messageArray)
             if (dangerWords.Contains(word))
                 count++;
-        return (count, message);
+        return count;
     }
 
     static void PrintAlert(int dangerLevel, string message)
@@ -29,6 +29,7 @@ public class AtBash
         
         finalMessage += message + "\n\n";
         finalMessage += $"danger level is {dangerLevel}";
+        Console.WriteLine(finalMessage);
     }
     static string decrypt(string code)
     {
@@ -48,11 +49,10 @@ public class AtBash
 
     public static void Main(string[] args)
     {
-        string a = "Hello World Hello World Hello World";
-        string[] b = new string[] { "Hello" };
-        Console.WriteLine(DangerCheck(a, b));
-        Console.WriteLine(decrypt("Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.\r\nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.\r\nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh.\r\nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.\r\nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.\r\nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg.\r\nErxglib rh mvzi. Hgzb ivzwb.\r\n"));
-
+        string message = "Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb. nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo. nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh. nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm. nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt. nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg. nErxglib rh mvzi. Hgzb ivzwb.";
+        string[] dangerWords = new string[] {"bomb",  "nukhba", "fighter", "rocket", "secret"};
+        string message_decrypt = decrypt(message);
+        PrintAlert(DangerCheck(message_decrypt,dangerWords),message_decrypt);
     }
 }
 
