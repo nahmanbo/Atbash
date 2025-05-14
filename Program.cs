@@ -5,8 +5,21 @@ using System;
 
 public class HelloWorld
 {
-    public static void Main(string[] args)
+    static int DangerCheck(string message, string[] dangerWords)
     {
-        Console.WriteLine ("Try programiz.pro");
+        int count = 0;
+        string[] messageArray = message.Split(" ");
+        foreach (string word in messageArray)
+            if (dangerWords.Contains(word))
+                count++;
+        return count;
+    }
+
+
+public static void Main(string[] args)
+    {
+        string a = "Hello World Hello World Hello World";
+        string [] b = new string [] { "Hello" };
+        Console.WriteLine(DangerCheck(a,b));
     }
 }
