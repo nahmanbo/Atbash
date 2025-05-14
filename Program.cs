@@ -31,16 +31,17 @@ public class AtBash
         finalMessage += $"danger level is {dangerLevel}";
         Console.WriteLine(finalMessage);
     }
-    static string decrypt(string code)
+    static string Decrypt(string code)
     {
-        string code_oflower = code.ToLower();
         string decryp_kod = "";
         string small_abc = "abcdefghijklmnopqrstuvwxyz";
-
-        foreach (char c in code_oflower)
+        string capital_abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        foreach (char c in code)
         {
             if (!char.IsLetter(c))
                 decryp_kod += c;
+            else if(char.IsUpper(c))
+                decryp_kod += capital_abc[capital_abc.Length - 1 - capital_abc.IndexOf(c)];
             else
                 decryp_kod += small_abc[small_abc.Length - 1 - small_abc.IndexOf(c)];
         }
@@ -51,7 +52,7 @@ public class AtBash
     {
         string message = "Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb. nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo. nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh. nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm. nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt. nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg. nErxglib rh mvzi. Hgzb ivzwb.";
         string[] dangerWords = new string[] {"bomb",  "nukhba", "fighter", "rocket", "secret"};
-        string message_decrypt = decrypt(message);
+        string message_decrypt = Decrypt(message);
         PrintAlert(DangerCheck(message_decrypt,dangerWords),message_decrypt);
     }
 }
