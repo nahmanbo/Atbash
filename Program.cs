@@ -3,7 +3,7 @@
 
 using System;
 
-public class HelloWorld
+public class AtBash
 {
     static int DangerCheck(string message, string[] dangerWords)
     {
@@ -14,13 +14,10 @@ public class HelloWorld
                 count++;
         return count;
     }
-
-
-public static void Main(string[] args)
+    public static void Main(string[] args)
     {
         string a = "Hello World Hello World Hello World";
         string [] b = new string [] { "Hello" };
         Console.WriteLine(DangerCheck(a,b));
-
     }
 }
